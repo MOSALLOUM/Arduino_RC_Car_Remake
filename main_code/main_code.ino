@@ -11,7 +11,13 @@
 #define ENB 5 // PWM
 
 void setup() {
-  // put your setup code here, to run once:
+  
+  pinMode(IN1, OUTPUT);
+  pinMode(IN2, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  pinMode(ENA, OUTPUT);
+  pinMode(ENB, OUTPUT);
 
 }
 
