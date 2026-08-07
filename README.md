@@ -11,6 +11,4 @@ Components and Hardware:
   - Power: 2x 4800 mWh Li-ion batteries (3.7V each)
 
 Note:
-   To conserve chassis space and simplify wiring, a single L298N driver was used. The two DC motors on each side are wired in parallel,       allowing differential (skid-steer) control for each side. If you wish to control each motor separately, adding another L298N is the go-    to.   
-  
-*: The variations you can do with such model (Adding Ultrasonic sensor, IMU, etc.)
+   To conserve chassis space and simplify wiring, a single L298N driver was used. The two DC motors on each side are wired in parallel,       allowing differential (skid-steer) control for each side. If you wish to control each motor separately, adding another L298N is the go-    to.
