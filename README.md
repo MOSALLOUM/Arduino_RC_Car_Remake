@@ -1,6 +1,6 @@
 Arduino RC Car (with Module Variations)*
 
-A Bluetooth-controlled, 4WD robotic car built with an Arduino and an HC-06 Bluetooth module. This repository documents the original build as well as modular expansions (such as adding ultrasonic sensors, IMUs, and more).
+A Bluetooth-controlled, 4WD robotic car built with an Arduino and an HC-06 Bluetooth module. This repository documents the original build (made a few years ago) as well as modular expansions (such as adding ultrasonic sensors, IMUs, and more).
 
 Components and Hardware:
   - Chassis: 4WD pre-built robot chassis (From here https://ekt1.com/en)
