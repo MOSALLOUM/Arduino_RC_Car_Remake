@@ -1,3 +1,15 @@
+//Channel A
+#define IN1 6
+#define IN2 7
+
+//Channel B
+#define IN3 8
+#define IN4 9
+
+//Enable Pins
+#define ENA 3 //PWM
+#define ENB 5 // PWM
+
 void setup() {
   // put your setup code here, to run once:
 
