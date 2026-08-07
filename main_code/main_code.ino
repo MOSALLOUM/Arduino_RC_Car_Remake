@@ -25,11 +25,24 @@ void setup() {
 
 void loop() {
   
-  
+  if(Serial.available()) {
+    char c = Serial.read();
+    if(c == 'F') {
+      FORWARD();
+    } else if (c == 'B') {
+      BACKWARD();
+    } else if (c == 'R') {
+      RIGHT();
+    } else if (c == 'L') {
+      LEFT();
+    } else if (c == 'S') {
+      STOP();
+    }
+  }
 
 }
 
-void FORWARD() {
+void BACKWARD() {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
 
@@ -40,7 +53,7 @@ void FORWARD() {
   analogWrite(ENB, 255);
 }
 
-void BACKWARD() {
+void FORWARD() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
 
@@ -55,16 +68,16 @@ void RIGHT() {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, LOW);
 
-  digitalWrite(IN3, HIGH);
-  digitalWrite(IN4, LOW);
+  digitalWrite(IN3, LOW);
+  digitalWrite(IN4, HIGH);
 
   analogWrite(ENA, 255);
   analogWrite(ENB, 255);
 }
 
 void LEFT() {
-  digitalWrite(IN1, HIGH);
-  digitalWrite(IN2, LOW);
+  digitalWrite(IN1, LOW);
+  digitalWrite(IN2, HIGH);
 
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, LOW);
@@ -73,8 +86,7 @@ void LEFT() {
   analogWrite(ENB, 255);
 }
 
-void STOP() {
-  digitalWrite(IN1, LOW);
+void STOP() {  digitalWrite(IN1, LOW);
   digitalWrite(IN2, LOW);
 
   digitalWrite(IN3, LOW);
