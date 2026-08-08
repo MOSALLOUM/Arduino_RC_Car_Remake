@@ -1,0 +1,42 @@
+### Differential Steering
+
+Currently, the model uses skid steering, which produces relatively
+abrupt turns. I found the current implementation to be perfectly
+acceptable, but differential steering can be used to achieve smoother
+turns.
+
+One way to implement this is to reduce the speed of the side that the
+car is turning toward, rather than stopping it completely.
+
+For example, during a right turn:
+
+- Left side → normal speed
+- Right side → reduced speed
+
+The reduced speed can be calculated using a scaling factor `α`, where:
+
+`0 ≤ α ≤ 1`
+
+For example:
+
+- `α = 0` → the turning side is stopped, producing a sharp pivot-like turn.
+- `α = 0.4` → the turning side runs at 40% of the requested speed, producing
+  a smoother turn.
+- `α = 1` → both sides run at the same speed, resulting in straight movement.
+
+With the maximum PWM value being 255, an `α` value of 0.4 gives:
+
+`0.4 × 255 = 102`
+
+Therefore, for a right turn at maximum speed, the left side could receive
+a PWM value of 255 while the right side receives approximately 102.
+
+This method also works with speed control, since the turning-side PWM is scaled proportionally to the selected speed using α. 
+So we are not tied to only using 255 as seen in the example above.
+
+This approach allows the turning radius to be adjusted without requiring
+independent motor control.
+
+Another approach is to use separate motor drivers to control each motor
+independently. This provides greater control, but requires additional
+hardware, wiring, space, and software.
