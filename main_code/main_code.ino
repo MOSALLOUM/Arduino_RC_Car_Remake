@@ -27,16 +27,14 @@ void loop() {
   
   if(Serial.available()) {
     char c = Serial.read();
-    if(c == 'F') {
-      FORWARD();
-    } else if (c == 'B') {
-      BACKWARD();
-    } else if (c == 'R') {
-      RIGHT();
-    } else if (c == 'L') {
-      LEFT();
-    } else if (c == 'S') {
-      STOP();
+    Serial.println(c);
+    switch(c) {
+      case 'F': FORWARD(); break;
+      case 'B': BACKWARD(); break;
+      case 'R': RIGHT(); break;
+      case 'L': LEFT(); break;
+      case 'S': STOP(); break;
+      default: STOP(); break;
     }
   }
 
@@ -86,12 +84,13 @@ void LEFT() {
   analogWrite(ENB, 255);
 }
 
-void STOP() {  digitalWrite(IN1, LOW);
+void STOP() {  
+  digitalWrite(IN1, LOW);
   digitalWrite(IN2, LOW);
 
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, LOW);
 
-  analogWrite(ENA, 255);
-  analogWrite(ENB, 255);
+  analogWrite(ENA, 0);
+  analogWrite(ENB, 0);
 }
