@@ -1,0 +1,47 @@
+# Troubleshooting
+
+## Power
+
+- Check the common ground.
+- Make sure the batteries are sufficiently charged.
+- Check the battery voltage under load.
+- Check the battery polarity.
+- Make sure the battery can supply enough current.
+- Check the Arduino's power supply.
+
+## Wiring
+
+- Check that all wires work properly.
+- Check for loose breadboard connections.
+- Check for short circuits.
+- Verify the L298N power connections.
+- Verify the IN1–IN4 connections.
+- Check the ENA/ENB connections and jumpers.
+
+## L298N
+
+- Check the power jumper.
+- Check for overheating.
+- Check the L298N output voltage while the motors are running.
+
+## Motors
+
+- Make sure the motor terminals are properly soldered.
+- Test each motor individually before installing it.
+- Check motor polarity.
+- Check that the motors can spin freely.
+- Test the motors under mechanical load.
+
+## Mechanical
+
+- Make sure the wheels rotate freely.
+- Check for excessive friction.
+- Make sure the wheels are properly aligned.
+- Make sure nothing is rubbing against the chassis.
+
+## Software
+
+- Verify the Arduino pin definitions.
+- Verify the motor direction logic.
+- Check the PWM values.
+- Make sure the correct enable pins are being controlled.
