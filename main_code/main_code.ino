@@ -10,6 +10,9 @@
 #define ENA 3 //PWM
 #define ENB 5 // PWM
 
+//speed control
+int speed = 0
+
 void setup() {
 
   Serial.begin(9600);
@@ -27,7 +30,7 @@ void loop() {
   
   if(Serial.available()) {
     char c = Serial.read();
-    Serial.println(c);
+    
     switch(c) {
       case 'F': FORWARD(); break;
       case 'B': BACKWARD(); break;
