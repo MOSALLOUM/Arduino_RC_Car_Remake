@@ -11,7 +11,7 @@
 #define ENB 5 // PWM
 
 //speed control
-int speed = 0
+int speed = 9;
 
 void setup() {
 
@@ -27,64 +27,76 @@ void setup() {
 }
 
 void loop() {
-  
+
+  //Do this only if the application you are using outputs the speed value as a character
   if(Serial.available()) {
     char c = Serial.read();
-    
-    switch(c) {
-      case 'F': FORWARD(); break;
-      case 'B': BACKWARD(); break;
-      case 'R': RIGHT(); break;
-      case 'L': LEFT(); break;
-      case 'S': STOP(); break;
-      default: STOP(); break;
+    if(c >= '0' && c <= '9') {
+      speed = c - '0'; //if c = 8 (ascii 38), c - '0' would be (38 - 30 = 8(int)) (30 ascii of 0)
+    } else {
+        switch(c) {
+        case 'F': FORWARD(speed); break;
+        case 'B': BACKWARD(speed); break;
+        case 'R': RIGHT(speed); break;
+        case 'L': LEFT(speed); break;
+        case 'S': STOP(); break;
+        default: STOP(); break;
+      }
     }
   }
 
 }
 
-void BACKWARD() {
+void BACKWARD(int speed) {
   digitalWrite(IN1, HIGH);
   digitalWrite(IN2, LOW);
 
   digitalWrite(IN3, HIGH);
   digitalWrite(IN4, LOW);
 
-  analogWrite(ENA, 255);
-  analogWrite(ENB, 255);
+  int mapping = map(speed, 0, 9, 0, 255);
+
+  analogWrite(ENA, mapping);
+  analogWrite(ENB, mapping);
 }
 
-void FORWARD() {
+void FORWARD(int speed) {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
 
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
 
-  analogWrite(ENA, 255);
-  analogWrite(ENB, 255);
+  int mapping = map(speed, 0, 9, 0, 255);
+
+  analogWrite(ENA, mapping);
+  analogWrite(ENB, mapping);
 }
 
-void RIGHT() {
+void RIGHT(int speed) {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, LOW);
 
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, HIGH);
 
-  analogWrite(ENA, 255);
-  analogWrite(ENB, 255);
+  int mapping = map(speed, 0, 9, 0, 255);
+
+  analogWrite(ENA, mapping);
+  analogWrite(ENB, mapping);
 }
 
-void LEFT() {
+void LEFT(int speed) {
   digitalWrite(IN1, LOW);
   digitalWrite(IN2, HIGH);
 
   digitalWrite(IN3, LOW);
   digitalWrite(IN4, LOW);
 
-  analogWrite(ENA, 255);
-  analogWrite(ENB, 255);
+  int mapping = map(speed, 0, 9, 0, 255);
+
+  analogWrite(ENA, mapping);
+  analogWrite(ENB, mapping);
 }
 
 void STOP() {  
